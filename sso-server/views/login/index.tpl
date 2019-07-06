@@ -142,7 +142,7 @@
                                     <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-user"></span></span>
                                 <input type="text" id="username" name="username" class="form-control" placeholder="用户名"
-                                       value="20180804">
+                                       value="donyac">
                             </div>
                         </div>
                     </div>
@@ -159,20 +159,13 @@
                         </div>
                     </div>
 
-                    <!-- 用户类型选择 -->
-                    <div class="radio-group">
-                        <input type="radio" name="radioname" id="radioname1" value="学生" checked="checked">学生&nbsp;
-                        <input type="radio" name="radioname" id="radioname2" value="实习指导老师">实习指导老师&nbsp;
-                        <input type="radio" name="radioname" id="radioname3" value="项目负责人">项目负责人
-                    </div>
-
                     <!-- 登录重置按钮 -->
                     <div class="form-group form-actions">
                         <div class="col-xs-12 text-center">
                             <button type="submit" id="login" class="btn btn-sm btn-success">
                                 <span class="fa fa-check-circle"></span>登录
                             </button>
-                            <button type="button" id="reset" class="btn btn-sm btn-danger">
+                            <button type="reset" id="clear" class="btn btn-sm btn-danger">
                                 <span class="fa fa-close"></span> 重置
                             </button>
                         </div>
@@ -184,27 +177,5 @@
 </div>
 
 </body>
-<script type="text/javascript">
-    // document.ready(function () {
-    //     $("#login").click(function (event) {
-    //         var name = $("#username").val();
-    //         var pwd = $("#password").val();
-    //         if (name == "") {
-    //             alert("用户名不能为空！");
-    //         } else if (pwd == "") {
-    //             alert("密码不能为空！");
-    //         } else if (pwd != "" && pwd.length < 6) {
-    //             alert("密码不能小于6位！");
-    //         } else if (name != "" && pwd != "" && pwd.length >= 6) {
-    //             if (name == "20180804" && pwd == "123456") {
-    //                 alert("登录成功！");
-    //             } else {
-    //                 alert("用户名或密码错误！");
-    //                 window.location.href = "index.html";
-    //             }
-    //         }
-    //     });
-    // });
-</script>
 </html>
 

@@ -1,6 +1,11 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
+	"simple-sso/sso-server/models"
+	"strings"
+)
 
 type LoginController struct {
 	beego.Controller
@@ -8,18 +13,28 @@ type LoginController struct {
 
 func (c *LoginController) Get() {
 	c.TplName = "login/index.tpl"
-	//c.Ctx.WriteString("hello")
-}
-
-type person struct {
-	Name string
-	Age  int
 }
 
 func (c *LoginController) Post() {
-	//c.Ctx.WriteString("hello")
-	//c.TplName = "login/index.tpl"
-	mystruct := person{Name: "dongnan", Age: 10}
-	c.Data["json"] = &mystruct
-	c.ServeJSON()
+	redirectUrl := c.GetString("redirectUrl")
+	if len(redirectUrl) == 0 {
+		redirectUrl = "http://localhost:8080/index?"
+	}
+	userName := strings.Trim(c.GetString("username"), " ")
+	password := strings.Trim(c.GetString("password"), " ")
+
+	//执行登录行为
+	ticket := models.Login(userName, password)
+
+	logs.Debug("ticket=" + ticket)
+
+	if ticket != "" {
+		redirectUrl = redirectUrl + "ticket=" + ticket
+
+		logs.Debug(redirectUrl + userName + password)
+
+		c.Redirect(redirectUrl, 302)
+	} else {
+		c.Redirect("http://localhost:1080/login?redirectURL="+redirectUrl, 302)
+	}
 }
