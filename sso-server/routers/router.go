@@ -12,10 +12,6 @@ sso-server拦截未登录请求
 */
 var AccessControlFunc = func(ctx *context.Context) {
 	logs.Debug("In access control")
-	//userName := ctx.Input.Session("userName")
-	//if userName == nil {
-	//	ctx.Redirect(302, "/login")
-	//}
 }
 
 func init() {
